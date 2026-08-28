@@ -1,12 +1,24 @@
-# CRACKER Hold Selector v1
+# CRACKER Hold Selector v2
 
-사용자가 벽 사진에서 홀드를 클릭하면 Roboflow SAM 3 Interactive(PVS)에 point prompt를 보내고, 반환된 mask를 원본 사진 위에 색상 테두리/라벨로 표시합니다. 결과는 PNG로 저장합니다.
+벽 사진 위에서 원하는 홀드를 클릭하고, Roboflow SAM 3 Interactive Segmentation으로 홀드 외곽선을 받아 원본 사진 위에 표시한 뒤 PNG로 저장하는 사이트입니다.
+
+## GitHub 업로드 구조
+
+반드시 아래 구조를 유지하세요.
+
+```
+index.html
+app.js
+style.css
+worker.js
+README.md
+spray wall.jpg
+```
+
+특히 `spray wall.jpg`가 빠지면 기본 벽 사진이 표시되지 않습니다.
 
 ## GitHub Pages
-index.html, style.css, app.js, worker.js, assets/wall.jpg를 업로드합니다. Pages를 켠 뒤 사이트 왼쪽 AI 연결에 Roboflow API Key를 입력하고 AI 설정 적용을 누르면 테스트할 수 있습니다.
 
-## 공개 운영 권장
-Cloudflare Worker로 worker.js를 배포하고 Worker Secret `ROBOFLOW_API_KEY`에 Roboflow 키를 넣습니다. 사이트의 Worker URL 칸에 Worker 주소를 입력하면 GitHub 코드에 API Key를 넣지 않아도 됩니다.
+Settings → Pages → Source: Deploy from a branch → Branch: main / (root)
 
-## 주의
-API 응답 형식에 따라 mask 파싱이 달라질 수 있습니다. 현재 SAM3 PVS의 point prompt / positive-negative click 흐름에 맞춰 작성했습니다.
+이미 설정되어 있다면 Save를 누를 필요가 없습니다.
